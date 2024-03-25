@@ -16,7 +16,6 @@ namespace SupermarketPricingTests
         public void Scan_OneItem_NospeicalPrice_mustReturnUnitPrice()
         {
             
-           
             Assert.Pass();
         }
     }
