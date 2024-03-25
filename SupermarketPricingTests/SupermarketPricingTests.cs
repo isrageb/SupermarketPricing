@@ -1,5 +1,3 @@
-using SupermarketPrice;
-
 namespace SupermarketPricingTests
 {
     public class SupermarketPricingTests
