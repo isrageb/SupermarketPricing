@@ -15,8 +15,12 @@ namespace SupermarketPricingTests
         [Test]
         public void Scan_OneItem_NospeicalPrice_mustReturnUnitPrice()
         {
-            
-            Assert.Pass();
+            pricing.SetUnitPrice('A', 50);
+            pricing.Scan("A");
+
+            int totalPrice = pricing.GetTotalPrice();
+
+            Assert.AreEqual(40, totalPrice);
         }
     }
 }
