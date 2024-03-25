@@ -3,7 +3,7 @@
     public class SupermarketPricing : ICheckout
     {
         private Dictionary<char, int> unitPrices = new Dictionary<char, int>();
-        private Dictionary<char, int> scannedItems = new Dictionary<char, int>();
+        private List<char> scannedItems = new List<char>();
         private Dictionary<char, Tuple<int, int>> specialPrices = new Dictionary<char, Tuple<int, int>>();
 
 
@@ -26,11 +26,7 @@
 
             char sku = item[0];
 
-            if (!scannedItems.ContainsKey(sku))
-            {
-                scannedItems[sku] = 0;
-            }
-            scannedItems[sku]++;
+            scannedItems.Add(sku);           
 
         }
 
@@ -56,6 +52,7 @@
                         quantity -= specialQuantity;
                     }
                 }
+
 
 
 

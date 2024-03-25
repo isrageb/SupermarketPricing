@@ -27,6 +27,7 @@ namespace SupermarketPricingTests
             Assert.AreEqual(50, totalPrice);
         }
 
+        [Test]
         public void Scan_MultiplItems_NospecialPrice_shouldReturnCorrectTotal()
         {
             //arrange
@@ -40,7 +41,7 @@ namespace SupermarketPricingTests
 
             //assert
 
-            Assert.AreEqual(70, totalPrice);
+            Assert.AreEqual(80, totalPrice);
 
         }
     }
