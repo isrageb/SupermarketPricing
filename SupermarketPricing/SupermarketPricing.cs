@@ -4,10 +4,17 @@
     {
         private Dictionary<char, int> unitPrices = new Dictionary<char, int>();
         private Dictionary<char, int> scannedItems = new Dictionary<char, int>();
+        private Dictionary<char, Tuple<int, int>> specialPrices = new Dictionary<char, Tuple<int, int>>();
+
 
         public void SetUnitPrice(char sku, int price)
         {
             unitPrices[sku] = price;
+        }
+
+        public void SetSpecialPrice(char sku, int quantity, int price)
+        {
+            specialPrices[sku] = Tuple.Create(quantity, price);
         }
 
         public void Scan(string item)

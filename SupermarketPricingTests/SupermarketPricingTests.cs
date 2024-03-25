@@ -20,7 +20,9 @@ namespace SupermarketPricingTests
 
             int totalPrice = pricing.GetTotalPrice();
 
-            Assert.AreEqual(40, totalPrice);
+            Assert.AreEqual(50, totalPrice);
         }
+
+
     }
 }
