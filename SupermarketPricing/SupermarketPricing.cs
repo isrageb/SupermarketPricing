@@ -35,10 +35,25 @@
         {
             int total = 0;
 
-            foreach (var item in scannedItems)
+            Dictionary<char, int> itemCounts = new Dictionary<char, int>();
+
+            // Count the quantity of each scanned item
+            foreach (var sku in scannedItems)
             {
-                char sku = item.Key;
-                int quantity = item.Value;
+                if (!itemCounts.ContainsKey(sku))
+                {
+                    itemCounts[sku] = 0;
+                }
+
+                itemCounts[sku]++;
+            }
+
+
+
+            foreach (var entry in itemCounts)
+            {
+                char sku = entry.Key;
+                int quantity = entry.Value;
 
                 if (specialPrices.ContainsKey(sku))
                 {
@@ -46,29 +61,23 @@
                     int specialQuantity = specialPrice.Item1;
                     int specialPriceAmount = specialPrice.Item2;
 
-                    while (quantity >= specialQuantity)
-                    {
-                        total += specialPriceAmount;
-                        quantity -= specialQuantity;
-                    }
-                }
+                    int specialPriceApplications = quantity / specialQuantity;
 
+                    total += specialPriceApplications * specialPriceAmount;
 
+                    int remainingQuantity = quantity % specialQuantity;
 
+                    total += remainingQuantity * unitPrices[sku];
 
-                if (unitPrices.ContainsKey(sku))
-                {
-                    total += quantity * unitPrices[sku];
                 }
                 else
                 {
-                    throw new ArgumentException($"Unknown SKU: {sku}");
+                    total += quantity * unitPrices[sku];
                 }
-
             }
+
             return total;
         }
-
        
     }
 }
