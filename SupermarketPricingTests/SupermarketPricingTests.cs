@@ -44,5 +44,22 @@ namespace SupermarketPricingTests
             Assert.AreEqual(80, totalPrice);
 
         }
+
+        [Test]
+        public void Scan_MultipleItemsWithSpecialPrice_ShouldReturnCorrectTotal()
+        {
+            // Arrange
+            pricing.SetUnitPrice('A', 50);
+            pricing.SetSpecialPrice('A', 3, 130);
+            pricing.Scan("A");
+            pricing.Scan("A");
+            pricing.Scan("A");
+
+            // Act
+            int totalPrice = pricing.GetTotalPrice();
+
+            // Assert
+            Assert.AreEqual(120, totalPrice);
+        }
     }
 }
