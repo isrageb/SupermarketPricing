@@ -43,8 +43,23 @@
             {
                 char sku = item.Key;
                 int quantity = item.Value;
-                
-                if(unitPrices.ContainsKey(sku))
+
+                if (specialPrices.ContainsKey(sku))
+                {
+                    var specialPrice = specialPrices[sku];
+                    int specialQuantity = specialPrice.Item1;
+                    int specialPriceAmount = specialPrice.Item2;
+
+                    while (quantity >= specialQuantity)
+                    {
+                        total += specialPriceAmount;
+                        quantity -= specialQuantity;
+                    }
+                }
+
+
+
+                if (unitPrices.ContainsKey(sku))
                 {
                     total += quantity * unitPrices[sku];
                 }
