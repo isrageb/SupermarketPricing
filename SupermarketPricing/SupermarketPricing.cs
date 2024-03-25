@@ -4,7 +4,7 @@
     {
         private Dictionary<char, int> unitPrices = new Dictionary<char, int>();
         private List<char> scannedItems = new List<char>();
-        private Dictionary<char, Tuple<int, int>> specialPrices = new Dictionary<char, Tuple<int, int>>();
+        private Dictionary<char, SpecialPrice> specialPrices = new Dictionary<char, SpecialPrice>();
 
 
         public void SetUnitPrice(char sku, int price)
@@ -14,7 +14,7 @@
 
         public void SetSpecialPrice(char sku, int quantity, int price)
         {
-            specialPrices[sku] = Tuple.Create(quantity, price);
+            specialPrices[sku] = new SpecialPrice(quantity, price);
         }
 
         public void Scan(string item)
@@ -58,8 +58,8 @@
                 if (specialPrices.ContainsKey(sku))
                 {
                     var specialPrice = specialPrices[sku];
-                    int specialQuantity = specialPrice.Item1;
-                    int specialPriceAmount = specialPrice.Item2;
+                    int specialQuantity = specialPrice.Quantity;
+                    int specialPriceAmount = specialPrice.Price;
 
                     int specialPriceApplications = quantity / specialQuantity;
 
