@@ -1,3 +1,5 @@
+using SupermarketPrice;
+
 namespace SupermarketPricingTests
 {
     public class SupermarketPricingTests
@@ -13,6 +15,7 @@ namespace SupermarketPricingTests
         [Test]
         public void Scan_OneItem_NospeicalPrice_mustReturnUnitPrice()
         {
+            
            
             Assert.Pass();
         }

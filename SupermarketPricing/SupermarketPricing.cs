@@ -1,4 +1,4 @@
-﻿namespace SupermarketPricing
+﻿namespace SupermarketPrice
 {
     public class SupermarketPricing
     {
